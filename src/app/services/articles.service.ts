@@ -9,7 +9,7 @@ import {Observable} from "rxjs/Observable";
 export class ArticlesService {
   public url: string;
 
-  constructor(public http: HttpClient) {
+  constructor(public httpClient: HttpClient) {
     this.url = GLOBAL.url + '/article';
   }
 
@@ -18,8 +18,11 @@ export class ArticlesService {
   }
 
   getArticles(): Observable<any> {
-    return this.http.get(this.url + '/list');
+    return this.httpClient.get(this.url + '/list');
   }
 
+  deleteArticle(id) {
+    return this.httpClient.delete(this.url + '/delete/' + id);
+  }
 
 }

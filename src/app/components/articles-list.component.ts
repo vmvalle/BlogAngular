@@ -23,15 +23,32 @@ export class ArticlesListComponent {
 
   ngOnInit() {
     console.log('Se ha cargado el componente ArticlesListComponent');
+    this.getArticlesList();
+  }
 
+  getArticlesList() {
     this.articlesService.getArticles().subscribe(
       result => {
         console.log(result);
         this.articles = result;
       },
       error => {
-        console.log(<any>error)
+        console.log(<any>error);
+        alert('Se ha producido un error.');
       }
     );
+  }
+
+  onDeleteArticle(id) {
+      this.articlesService.deleteArticle(id).subscribe(
+        result => {
+          console.log(result);
+          this.getArticlesList();
+        },
+        error => {
+          console.log(<any>error);
+          alert('Se ha producido un error.');
+        }
+      );
   }
 }
