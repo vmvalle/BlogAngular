@@ -11,11 +11,13 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./components/home.component";
 import {ArticlesListComponent} from "./components/articles-list.component";
 import {ErrorComponent} from "./components/error.component";
+import {ArticleComponent} from "./components/article.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ArticleComponent,
     ArticlesListComponent,
     ErrorComponent
   ],
