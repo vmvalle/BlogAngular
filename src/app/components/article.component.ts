@@ -12,7 +12,11 @@ export class ArticleComponent implements OnInit {
   public titleNew: string;
   public articulo: Article;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private articlesService: ArticlesService
+  ) {
     this.titleNew = 'Create new Article';
     this.articulo = new Article(null, '', '', null, '', null);
   }
@@ -23,6 +27,16 @@ export class ArticleComponent implements OnInit {
 
   onSubmit() {
     console.log(this.articulo);
+    this.articlesService.addArticle(this.articulo).subscribe(
+      result => {
+        console.log("Artículo guardado: " + result);
+        this.router.navigate(['/articles']);
+      },
+      error => {
+        console.log(<any>error);
+        alert('Se ha producido un error.');
+      }
+    );
   }
 
 }

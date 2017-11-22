@@ -22,8 +22,8 @@ export class ArticlesListComponent {
   }
 
   ngOnInit() {
-    console.log('Se ha cargado el componente ArticlesListComponent');
     this.getArticlesList();
+    console.log('Se ha cargado el componente ArticlesListComponent');
   }
 
   getArticlesList() {

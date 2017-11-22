@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Article} from "../models/article";
 import {GLOBAL} from "./global";
 import {Observable} from "rxjs/Observable";
@@ -9,7 +9,9 @@ import {Observable} from "rxjs/Observable";
 export class ArticlesService {
   public url: string;
 
-  constructor(public httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient
+  ) {
     this.url = GLOBAL.url + '/article';
   }
 
@@ -23,6 +25,12 @@ export class ArticlesService {
 
   deleteArticle(id) {
     return this.httpClient.delete(this.url + '/delete/' + id);
+  }
+
+  addArticle(articulo: Article) {
+    let body = JSON.stringify(articulo);
+    let headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.httpClient.post(this.url + '/add', body, {headers});
   }
 
 }
