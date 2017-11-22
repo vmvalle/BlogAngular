@@ -9,12 +9,12 @@ import {Article} from "../models/article";
   providers: [ArticlesService]
 })
 export class ArticleComponent implements OnInit {
-  public title: string;
-  public article: Article;
+  public titleNew: string;
+  public articulo: Article;
 
   constructor() {
-    this.title = 'Create new Article';
-    this.article = new Article(null, '', '', null, '', null);
+    this.titleNew = 'Create new Article';
+    this.articulo = new Article(null, '', '', null, '', null);
   }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class ArticleComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.article);
+    console.log(this.articulo);
   }
 
 }

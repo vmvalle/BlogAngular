@@ -1,21 +1,21 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>{{title}}</h1>
+    <h1>{{titleNew}}</h1>
   </div>
 </div>
 <div class="container">
   <form #article="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="titleArticle">Title</label>
-      <input type="text" class="form-control" id="titleArticle" #title="ngModel" name="title" [(ngModel)]="article.title" required>
+      <input type="text" class="form-control" id="titleArticle" placeholder="Name of article" #title="ngModel" name="title" [(ngModel)]="articulo.title" required>
     </div>
     <div class="form-group">
       <label for="authorArticle">Author</label>
-      <input type="text" class="form-control" id="authorArticle" placeholder="Enter Author of Article" #author="ngModel" name="author" [(ngModel)]="article.author">
+      <input type="text" class="form-control" id="authorArticle" placeholder="Enter the author of article" #author="ngModel" name="author" [(ngModel)]="articulo.author">
     </div>
     <div class="form-group">
       <label for="textArticle">Example textarea</label>
-      <textarea class="form-control" id="textArticle" rows="5" #text="ngModel" name="text" [(ngModel)]="article.text"></textarea>
+      <textarea class="form-control" id="textArticle" rows="5" placeholder="Enter the content of article"  #text="ngModel" name="text" [(ngModel)]="articulo.text"></textarea>
     </div>
     <button type="submit" class="btn btn-success" value="Guardar">Add Article</button>
   </form>
