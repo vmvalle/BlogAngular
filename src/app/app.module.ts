@@ -11,13 +11,17 @@ import { AppComponent } from './app.component';
 import {HomeComponent} from "./components/home.component";
 import {ArticlesListComponent} from "./components/articles-list.component";
 import {ErrorComponent} from "./components/error.component";
-import {ArticleComponent} from "./components/article.component";
+import {ArticleAddComponent} from "./components/article-add.component";
+import {ArticleViewComponent} from "./components/article-view.component";
+import {ArticleUpdateComponent} from "./components/article-update";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ArticleComponent,
+    ArticleAddComponent,
+    ArticleViewComponent,
+    ArticleUpdateComponent,
     ArticlesListComponent,
     ErrorComponent
   ],

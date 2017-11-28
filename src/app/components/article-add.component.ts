@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ArticlesService} from "../services/articles.service";
 import {Article} from "../models/article";
 
@@ -8,7 +8,7 @@ import {Article} from "../models/article";
   templateUrl: '../views/article-add.html',
   providers: [ArticlesService]
 })
-export class ArticleComponent implements OnInit {
+export class ArticleAddComponent implements OnInit {
   public titleNew: string;
   public articulo: Article;
 
@@ -30,6 +30,36 @@ export class ArticleComponent implements OnInit {
     this.articlesService.addArticle(this.articulo).subscribe(
       result => {
         console.log("Artículo guardado: " + result);
+        this.router.navigate(['/articles']);
+      },
+      error => {
+        console.log(<any>error);
+        alert('Se ha producido un error.');
+      }
+    );
+  }
+
+  getArticle() {
+    this.route.params.forEach( (params: Params) => {
+      let id = params['id'];
+      this.articlesService.getArticle(id).subscribe(
+        result => {
+          console.log("Artículo eliminado: " + result);
+          this.router.navigate(['/articles']);
+        },
+        error => {
+          console.log(<any>error);
+          alert('Se ha producido un error.');
+          this.router.navigate(['/articles']);
+        }
+      );
+    });
+  }
+
+  onDeleteArticle(id) {
+    this.articlesService.deleteArticle(id).subscribe(
+      result => {
+        console.log("Artículo eliminado: " + result);
         this.router.navigate(['/articles']);
       },
       error => {

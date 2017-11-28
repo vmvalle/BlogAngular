@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{articulo.title}}</h1>
+  </div>
+</div>
+<div class="container">
+  <p>
+    {{articulo.author}}
+  </p>
+  <p>
+    {{articulo.publishDate | date: 'mm:hh dd/MM/yyyy'}}
+  </p>
+  <p>
+    {{articulo.text}}
+  </p>
+  <hr>
+  <h4>Comments:</h4>
+  <div *ngIf="articulo.comments.length == 0" class="panel panel-default">
+    <div class="panel-body">A Basic Panel</div>
+  </div>
+  <div *ngFor="let comment of articulo.comments" class="panel panel-default">
+    <div class="panel-heading">Author: {{comment.author}}, Date: {{comment.date | date: 'mm:hh dd/MM/yyyy'}}</div>
+    <div class="panel-body">{{comment.text}}</div>
+  </div>
+  <hr>
+  <div class="panel panel-info">
+    <div class="panel-heading">New Comment</div>
+    <div class="panel-body">
+      <form #commentForm="ngForm" (ngSubmit)="addComment()">
+        <div class="form-group">
+          <label for="authorComment">Author</label>
+          <input type="text" class="form-control" id="authorComment" placeholder="Enter the author of comment" #author="ngModel" name="author" [(ngModel)]="comment.author" required>
+        </div>
+        <div class="form-group">
+          <label for="textComment">Comment</label>
+          <textarea class="form-control" id="textComment" rows="3" placeholder="Enter the content of comment"  #text="ngModel" name="text" [(ngModel)]="comment.text" required></textarea>
+        </div>
+        <input type="submit" class="btn btn-success" value="Add article" [disabled]="!commentForm.form.valid"/>
+      </form>
+    </div>
+  </div>
+</div>
