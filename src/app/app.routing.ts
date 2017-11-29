@@ -8,7 +8,7 @@ import {ArticleAddComponent} from "./components/article-add.component";
 import {ArticlesListComponent} from "./components/articles-list.component";
 import {ErrorComponent} from "./components/error.component";
 import {ArticleViewComponent} from "./components/article-view.component";
-import {ArticleUpdateComponent} from "./components/article-update";
+import {ArticleUpdateComponent} from "./components/article-update.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},

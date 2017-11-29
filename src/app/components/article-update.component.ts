@@ -27,8 +27,7 @@ export class ArticleUpdateComponent implements OnInit {
         },
         error => {
           console.log(<any>error);
-          alert('Se ha producido un error.');
-          this.router.navigate(['/articles']);
+          this.router.navigate(['/articles', {"errorMsg": "The article could not be showed"}]);
         }
       );
     });
@@ -43,11 +42,11 @@ export class ArticleUpdateComponent implements OnInit {
     this.articlesService.updateArticle(this.articulo).subscribe(
       result => {
         console.log("Artículo actualizado: " + result);
-        this.router.navigate(['/articles']);
+        this.router.navigate(['/articles', {"successMsg": "Article successfully updated"}]);
       },
       error => {
         console.log(<any>error);
-        alert('Se ha producido un error.');
+        this.router.navigate(['/articles', {"errorMsg": "The article could not be updated"}]);
       }
     );
   }

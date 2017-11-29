@@ -30,11 +30,12 @@ export class ArticleAddComponent implements OnInit {
     this.articlesService.addArticle(this.articulo).subscribe(
       result => {
         console.log("Artículo guardado: " + result);
-        this.router.navigate(['/articles']);
+        //let successMsg = "Article successfully created";
+        this.router.navigate(['/articles', {"successMsg": "Article successfully created"}]);
       },
       error => {
         console.log(<any>error);
-        alert('Se ha producido un error.');
+        this.router.navigate(['/articles', {"errorMsg": "The article could not be created"}]);
       }
     );
   }

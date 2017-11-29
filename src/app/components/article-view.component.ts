@@ -37,8 +37,7 @@ export class ArticleViewComponent implements OnInit {
         },
         error => {
           console.log(<any>error);
-          alert('Se ha producido un error.');
-          this.router.navigate(['/articles']);
+          this.router.navigate(['/articles', {"errorMsg": "The article could not be showed"}]);
         }
       );
     });

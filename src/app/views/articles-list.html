@@ -4,8 +4,19 @@
   </div>
 </div>
 <div class="container">
+  <!-- Alert Success -->
+  <div *ngIf="successMsg" class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> {{successMsg}}.
+  </div>
+  <!-- Alert Error -->
+  <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong> {{errorMsg}}.
+  </div>
   <!-- Nuevo Artículo -->
   <div>
+    <label>Create a new article: </label>
     <!-- Si llevase parámetros: [routerLink]="['/delete]', article.id]" -->
     <a class="btn btn-md btn-success" [routerLink]="['/articles/new']">New Article</a>
   </div>

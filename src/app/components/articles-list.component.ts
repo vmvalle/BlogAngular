@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ArticlesService} from "../services/articles.service";
 import {Article} from "../models/article";
 
@@ -12,6 +12,8 @@ export class ArticlesListComponent {
 
   public title: string;
   public articles: Article[];
+  public errorMsg: string;
+  public successMsg: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,11 +21,15 @@ export class ArticlesListComponent {
     private articlesService: ArticlesService
   ){
       this.title = 'Lista de artículos'
+      this.errorMsg = null;
+      this.successMsg = null;
   }
 
   ngOnInit() {
     this.getArticlesList();
+    this.checkMessages();
     console.log('Se ha cargado el componente ArticlesListComponent');
+
   }
 
   getArticlesList() {
@@ -50,5 +56,12 @@ export class ArticlesListComponent {
           alert('Se ha producido un error.');
         }
       );
+  }
+
+  checkMessages() {
+    this.route.params.forEach( (params: Params) => {
+      this.errorMsg = params['errorMsg'];
+      this.successMsg = params['successMsg'];
+    });
   }
 }
