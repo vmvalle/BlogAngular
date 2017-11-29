@@ -32,7 +32,7 @@
     </div>
   </div>
   <hr>
-  <div *ngIf="articulo.comments.length == 0" class="panel panel-default">
+  <div *ngIf="articulo.comments != null && articulo.comments.length == 0" class="panel panel-default">
     <div class="panel-body">There are no comments</div>
   </div>
   <div *ngFor="let comment of articulo.comments" class="panel panel-default">
