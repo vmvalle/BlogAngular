@@ -15,14 +15,6 @@
   </p>
   <hr>
   <h4>Comments:</h4>
-  <div *ngIf="articulo.comments.length == 0" class="panel panel-default">
-    <div class="panel-body">A Basic Panel</div>
-  </div>
-  <div *ngFor="let comment of articulo.comments" class="panel panel-default">
-    <div class="panel-heading">Author: {{comment.author}}, Date: {{comment.date | date: 'mm:hh dd/MM/yyyy'}}</div>
-    <div class="panel-body">{{comment.text}}</div>
-  </div>
-  <hr>
   <div class="panel panel-info">
     <div class="panel-heading">New Comment</div>
     <div class="panel-body">
@@ -38,5 +30,13 @@
         <input type="submit" class="btn btn-success" value="Add article" [disabled]="!commentForm.form.valid"/>
       </form>
     </div>
+  </div>
+  <hr>
+  <div *ngIf="articulo.comments.length == 0" class="panel panel-default">
+    <div class="panel-body">There are no comments</div>
+  </div>
+  <div *ngFor="let comment of articulo.comments" class="panel panel-default">
+    <div class="panel-heading">Author: {{comment.author}}, Date: {{comment.date | date: 'mm:hh dd/MM/yyyy'}}</div>
+    <div class="panel-body">{{comment.text}}</div>
   </div>
 </div>

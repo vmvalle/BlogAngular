@@ -8,6 +8,7 @@ import {ArticleAddComponent} from "./components/article-add.component";
 import {ArticlesListComponent} from "./components/articles-list.component";
 import {ErrorComponent} from "./components/error.component";
 import {ArticleViewComponent} from "./components/article-view.component";
+import {ArticleUpdateComponent} from "./components/article-update";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   {path: 'articles', component: ArticlesListComponent},
   {path: 'articles/new', component: ArticleAddComponent},
   {path: 'articles/:id', component: ArticleViewComponent},
+  {path: 'articles/update/:id', component: ArticleUpdateComponent},
   // Rutas que no existen, siempre debe ser la última declaración
   {path: '**', component: ErrorComponent}
 ];

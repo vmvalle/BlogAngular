@@ -9,7 +9,7 @@ import {Article} from "../models/article";
   providers: [ArticlesService]
 })
 export class ArticleUpdateComponent implements OnInit {
-  public titleNew: string;
+  public titleUpdate: string;
   public articulo: Article;
 
   constructor(
@@ -17,19 +17,32 @@ export class ArticleUpdateComponent implements OnInit {
     private router: Router,
     private articlesService: ArticlesService
   ) {
-    this.titleNew = 'Create new Article';
-    this.articulo = new Article(null, '', '', null, '', null);
+    this.titleUpdate = 'Update Article';
+    this.route.params.forEach( (params: Params) => {
+      let id = params['id'];
+      this.articlesService.getArticle(id).subscribe(
+        response => {
+          console.log(response);
+          this.articulo = response as Article;
+        },
+        error => {
+          console.log(<any>error);
+          alert('Se ha producido un error.');
+          this.router.navigate(['/articles']);
+        }
+      );
+    });
   }
 
   ngOnInit() {
-    console.log('Se ha cargado el componente ARTICLE');
+    console.log('Se ha cargado el componente ArticleUpdateComponent');
   }
 
   onSubmit() {
     console.log(this.articulo);
-    this.articlesService.addArticle(this.articulo).subscribe(
+    this.articlesService.updateArticle(this.articulo).subscribe(
       result => {
-        console.log("Artículo guardado: " + result);
+        console.log("Artículo actualizado: " + result);
         this.router.navigate(['/articles']);
       },
       error => {
